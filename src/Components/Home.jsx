@@ -1,9 +1,11 @@
 import React from "react";
+import Navbar from "./functions/Navbar";
 
 export default function Home() {
   return (
     <div>
       <div>
+        <Navbar/>
         <h1 className="text-3xl font-bold text-center text-blue-600 mt-10">
           Movie App
         </h1>
