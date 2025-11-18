@@ -1,14 +1,21 @@
 import React from "react";
 import { FiSearch } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate=useNavigate();
+  
+  let LogoClick =()=> {
+    navigate("/")
+  }
+    
   return (
     <div className="">
       {" "}
       {/* Navbar Background */}
-      <div className="h-16 flex items-center relative px-5  bg-[#dbdbdb]">
+      <div className="h-16 flex items-center relative px-5  bg-[#e4e4e4]">
         {/* Logo */}
-        <p className="cursor-pointer ml-10 font-black text-2xl text-black">
+        <p className="cursor-pointer ml-10 font-extrabold text-3xl text-black" onClick={LogoClick}>
           MovieApp
         </p>
 
@@ -16,7 +23,7 @@ export default function Navbar() {
         <div className="px-20">
           <div className="relative">
             {/* Search Icon */}
-            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xl" />
+            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xl cursor-pointer" />
 
             {/* Search Input */}
             <input
