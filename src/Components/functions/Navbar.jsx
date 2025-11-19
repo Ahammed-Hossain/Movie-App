@@ -3,38 +3,38 @@ import { FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
-  const navigate=useNavigate();
-  
-  let LogoClick =()=> {
-    navigate("/")
-  }
-    
+  const navigate = useNavigate();
+
+  let LogoClick = () => {
+    navigate("/");
+  };
+
   return (
-    <div className="">
-      {" "}
-      {/* Navbar Background */}
-      <div className="h-16 flex items-center relative px-5  bg-[#e4e4e4]">
-        {/* Logo */}
-        <p className="cursor-pointer ml-10 font-extrabold text-3xl text-black" onClick={LogoClick}>
+    <div>
+      {/* Navbar */}
+      <div className="h-16 flex items-center relative px-5 bg-[#0e0f11]">
+        <p
+          className="cursor-pointer ml-10 font-bold text-3xl text-white"
+          onClick={LogoClick}
+        >
           MovieApp
         </p>
 
-        {/* Search Bar */}
         <div className="px-20">
           <div className="relative">
-            {/* Search Icon */}
-            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xl cursor-pointer" />
+            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-white text-xl cursor-pointer" />
 
-            {/* Search Input */}
             <input
               type="text"
               placeholder="Search movies..."
-              className="border rounded-md 
-                         px-10 py-2 w-[500px] focus:outline-none "
+              className="border rounded-md px-10 py-2 w-[500px] focus:outline-none text-white bg-gray-400/50"
             />
           </div>
         </div>
       </div>
+
+      {/* Divider Line Below Navbar */}
+      <div className="w-full h-px bg-black scale-y-[0.2]" />
     </div>
   );
 }
