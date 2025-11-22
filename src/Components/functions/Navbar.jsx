@@ -31,6 +31,11 @@ export default function Navbar() {
             />
           </div>
         </div>
+
+        <div className="ml-[800px]">
+          <button className="text-white mr-5 font-semibold px-3 py-1 hover:bg-gray-400/50 rounded-md">Log in</button>
+          <button className="text-white mr-5 font-semibold px-3 py-1 hover:bg-gray-400/50 rounded-md">Sign Up</button>
+        </div>
       </div>
 
       {/* Divider Line Below Navbar */}

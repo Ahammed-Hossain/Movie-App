@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./functions/Navbar";
 import Sidebar from "./functions/Sidebar";
 import MovieCard from "./functions/MovieCard";
+import Recommended from "./functions/Recommended";
 export default function Home() {
   return (
     <div>
@@ -11,12 +12,18 @@ export default function Home() {
           <div className="w-[15%] bg-[#0e0f11]">
             <Sidebar />
           </div>
-          <div className="w-[85%] bg-[#0e0f11] h-lvh">
+          <div className="w-[85%] bg-[#0e0f11] h-[100%]">
             <img
               src="./sukuna.png"
               alt="BannerImg"
-              className="w-full h-[60%] object-cover"
+              className="w-full h-[500px] object-cover"
             />
+            <h1 className="text-left ml-4 mt-4 mb-4 text-white text-2xl font-bold">
+              Recommended for you
+            </h1>
+            <div>
+              <Recommended />
+            </div>
 
             <h1 className="text-left ml-4 mt-4 mb-4 text-white text-2xl font-bold">
               🔥Trending Now

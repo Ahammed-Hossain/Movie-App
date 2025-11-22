@@ -12,7 +12,7 @@ export default function MovieDetailsPage() {
         <div className="w-[15%] bg-[#0e0f11]">
           <Sidebar />
         </div>
-        <div className="w-[85%] bg-[#0e0f11] h-lvh">
+        <div className="w-[85%] bg-[#0e0f11] h-[100%]">
           <h2 className="text-white font-semibold text-left ml-5 mt-5 text-xl">Movie Details</h2>
            <div className="flex mt-5 ml-4">
           <div className="w-[180px] rounded-lg overflow-hidden">
