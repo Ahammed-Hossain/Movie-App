@@ -38,6 +38,7 @@ export default function DetailsPage() {
               </div>
             </div>
           </div>
+           <div className="w-full h-px bg-white scale-y-[0.2] mt-3" />
           <div className="flex items-center gap-2 ml-5 mt-20">
             <p className="text-white font-semibold text-xl">Top Cast</p>
             <p className="text-white text-[16px]">(21)</p>
@@ -49,6 +50,7 @@ export default function DetailsPage() {
             </div>
             
           </div>
+          
         </div>
       </div>
     </div>
