@@ -9,6 +9,15 @@ export default function Sidebar() {
   let homeClick = () => {
     navigate("/");
   };
+
+  let ClickAnime = () => {
+    navigate("/animations");
+  };
+
+  let MovieClick = () => {
+    navigate("/movies");
+  };
+
   return (
     <div>
       <div className="mt-5 ml-8 mr-8">
@@ -25,16 +34,20 @@ export default function Sidebar() {
             Home
           </p>
         </div>
-        <div className="flex gap-3 items-center mb-6 hover:bg-[#3d3d3d] p-2 rounded-lg cursor-pointer">
+        <div
+          className="flex gap-3 items-center mb-6 hover:bg-[#3d3d3d] p-2 rounded-lg cursor-pointer"
+          onClick={MovieClick}
+        >
           <FiVideo className="text-white text-xl" />
 
           <p className="text-xl font-bold text-left text-white">Movies</p>
         </div>
-        <div className="flex gap-3 items-center mb-6 hover:bg-[#3d3d3d] p-2 rounded-lg cursor-pointer">
+        <div
+          className="flex gap-3 items-center mb-6 hover:bg-[#3d3d3d] p-2 rounded-lg cursor-pointer"
+          onClick={ClickAnime}
+        >
           <GiBearHead className="text-white text-xl" />
-          <p className="text-xl font-bold text-left text-white ">
-            Animation
-          </p>
+          <p className="text-xl font-bold text-left text-white ">Animation</p>
         </div>
       </div>
     </div>

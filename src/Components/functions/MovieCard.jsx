@@ -5,7 +5,7 @@ export default function MovieCard() {
   const navigate = useNavigate();
 
   let ClickMovie = () => {
-    navigate("movieDetailsPage");
+    navigate("/DetailsPage");
   };
   return (
     <div>
