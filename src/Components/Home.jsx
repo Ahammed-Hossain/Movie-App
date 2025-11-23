@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./functions/Navbar";
 import Sidebar from "./functions/Sidebar";
 import MovieCard from "./functions/MovieCard";
 import Recommended from "./functions/Recommended";
 export default function Home() {
+  let [movies, setMovies] = useState([]);
+
+  const apiKey = process.env.REACT_APP_API_KEY;
+
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMovies(data.results.slice(0, 10));
+      })
+      .catch((err) => console.error(err));
+  }, [apiKey]);
+
   return (
     <div>
       <div>
@@ -28,8 +41,10 @@ export default function Home() {
             <h1 className="text-left ml-4 mt-4 mb-4 text-white text-2xl font-bold">
               🔥Trending Now
             </h1>
-            <div>
-              <MovieCard />
+            <div className="flex flex-wrap gap-4">
+              {movies.map((movie) => (
+                <MovieCard key={movie.id} movie={movie} />
+              ))}
             </div>
           </div>
         </div>
