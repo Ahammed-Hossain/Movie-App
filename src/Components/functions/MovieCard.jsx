@@ -6,10 +6,10 @@ export default function MovieCard({ movie }) {
 
   if (!movie) return null; // extra safety
 
-  const { poster_path, title } = movie;
+  const { poster_path, title, id } = movie;
 
   let ClickMovie = () => {
-    navigate("/DetailsPage");
+    navigate(`/DetailsPage/${id}`);
   };
 
   return (

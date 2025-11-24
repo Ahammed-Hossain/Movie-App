@@ -17,6 +17,8 @@ export default function MoviePage() {
       .catch((err) => console.error(err));
   }, [apiKey]);
 
+  console.log(movies);
+
   return (
     <div>
       <div>
