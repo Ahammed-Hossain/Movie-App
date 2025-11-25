@@ -33,7 +33,27 @@ export default function DetailsPage() {
 
   if (!movie) return <p className="text-white ml-5 mt-5">Loading...</p>;
 
+  const trackMovie = (movie) => {
+  let watched = JSON.parse(localStorage.getItem("watched_movies")) || [];
+
+  watched = watched.filter((item) => item.id !== movie.id);
+
+  watched.unshift({
+    id: movie.id,
+    title: movie.title,
+    poster: movie.poster_path,
+    category: movie.genres?.[0]?.id ? movie.genres[0].id : 28,
+    type: "movie",
+  });
+
+  if (watched.length > 7) watched = watched.slice(0, 7);
+
+  localStorage.setItem("watched_movies", JSON.stringify(watched));
+};
+
+
   const ClickWatch = () => {
+    trackMovie(movie);
     navigate(`/showVideo/${trailerKey}`);
   };
 
@@ -51,7 +71,9 @@ export default function DetailsPage() {
 
         {/* Main Content */}
         <div className="w-[85%] p-5">
-          <h2 className="text-white text-left font-semibold text-xl mb-5">Details</h2>
+          <h2 className="text-white text-left font-semibold text-xl mb-5">
+            Details
+          </h2>
 
           <div className="flex gap-8">
             {/* Movie Poster */}
