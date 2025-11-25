@@ -4,6 +4,7 @@ import Sidebar from "./functions/Sidebar";
 import MovieCard from "./functions/MovieCard";
 import Recommended from "./functions/Recommended";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import AnimeSection from "./functions/AnimeSection";
 export default function Home() {
   let [movies, setMovies] = useState([]);
   const scrollRef = useRef(null);
@@ -68,8 +69,14 @@ export default function Home() {
                   scrollRef.current.scrollBy({ left: 200, behavior: "smooth" })
                 }
               >
-               <FiChevronRight size={24} />
+                <FiChevronRight size={24} />
               </button>
+            </div>
+            <h1 className="text-left ml-4 mt-4 mb-4 text-white text-2xl font-bold">
+              Animations
+            </h1>
+            <div>
+              <AnimeSection />
             </div>
           </div>
         </div>

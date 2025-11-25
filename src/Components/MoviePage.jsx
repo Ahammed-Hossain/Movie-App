@@ -9,10 +9,12 @@ export default function MoviePage() {
   const apiKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`)
+    fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&without_genres=16`
+    )
       .then((res) => res.json())
       .then((data) => {
-        setMovies(data.results.slice(0, 10));
+        setMovies(data.results.slice(0, 20));
       })
       .catch((err) => console.error(err));
   }, [apiKey]);
@@ -33,7 +35,7 @@ export default function MoviePage() {
             <p className="text-white font-semibold text-left ml-5 mb-5 mt-5 text-xl">
               Movies
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 mb-10">
               {movies.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />
               ))}

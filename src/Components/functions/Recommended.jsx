@@ -1,19 +1,52 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import MovieCard from "./MovieCard";
 
 export default function Recommended() {
-  const navigate= useNavigate();
-
-  let MovieClick=()=> {
- navigate("/DetailsPage")
-  }
+   let [movies, setMovies] = useState([]);
+    const scrollRef = useRef(null);
+     const apiKey = process.env.REACT_APP_API_KEY;
+    
+      useEffect(() => {
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`)
+          .then((res) => res.json())
+          .then((data) => {
+            setMovies(data.results.slice(0, 10));
+          })
+          .catch((err) => console.error(err));
+      }, [apiKey]);
+    
 
   return (
     <div>
-      <div className="bg-[#3f3f3f] mr-3 ml-3 w-[200px] rounded-lg overflow-hidden cursor-pointer" onClick={MovieClick}>
-        <img src="./Good boy.jpg" alt="poster" className="w-full" />
-        <h3 className="p-1 font-semibold text-white">Movie Name</h3>
+        <div className="relative">
+                      <button
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg z-10 transition-colors"
+                        onClick={() =>
+                          scrollRef.current.scrollBy({ left: -200, behavior: "smooth" })
+                        }
+                      >
+                        <FiChevronLeft size={24} />
+                      </button>
+        
+                      <div
+                        ref={scrollRef}
+                        className="flex overflow-x-hidden gap-4 px-5 py-3"
+                      >
+                        {movies.map((movie) => (
+                          <MovieCard key={movie.id} movie={movie} />
+                        ))}
+                      </div>
+        
+                      <button
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg z-10 transition-colors"
+                        onClick={() =>
+                          scrollRef.current.scrollBy({ left: 200, behavior: "smooth" })
+                        }
+                      >
+                       <FiChevronRight size={24} />
+                      </button>
+                    </div>
       </div>
-    </div>
   );
 }
