@@ -43,7 +43,7 @@ export default function DetailsPage() {
     title: movie.title,
     poster: movie.poster_path,
     category: movie.genres?.[0]?.id ? movie.genres[0].id : 28,
-    type: "movie",
+    type: movie.first_air_date ? "tv" : "movie",
   });
 
   if (watched.length > 7) watched = watched.slice(0, 7);
@@ -100,7 +100,7 @@ export default function DetailsPage() {
                   Watch Trailer
                 </button>
                 <button className="px-6 py-2 bg-[rgb(72,129,6)] rounded-md font-bold text-xl">
-                  Download
+                  Set as favorite
                 </button>
               </div>
             </div>
