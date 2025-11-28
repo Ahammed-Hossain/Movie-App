@@ -5,6 +5,7 @@ import DetailsPage from './Components/MovieDetailsPage';
 import Animation from './Components/Animation';
 import MoviePage from './Components/MoviePage';
 import ShowVideo from './Components/functions/ShowVideo';
+import FavoritePage from './Components/FavoritePage';
 
 function App() {
   const allrouters = createBrowserRouter([
@@ -12,6 +13,7 @@ function App() {
     { path: '/DetailsPage/:id', element: <DetailsPage /> }, // <-- DYNAMIC ROUTE
     { path: '/animations', element: <Animation /> },
     { path: '/showVideo/:trailerKey', element: <ShowVideo /> },
+    { path: '/favoritepage', element: <FavoritePage /> },
     { path: '/movies', element: <MoviePage /> }
   ]);
 

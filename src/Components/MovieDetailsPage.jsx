@@ -57,6 +57,10 @@ export default function DetailsPage() {
     navigate(`/showVideo/${trailerKey}`);
   };
 
+  const ClickFav=()=> {
+    navigate(`/favoritepage`)
+  }
+
   return (
     <div className="bg-[#0e0f11] min-h-screen">
       <div>
@@ -99,7 +103,7 @@ export default function DetailsPage() {
                 >
                   Watch Trailer
                 </button>
-                <button className="px-6 py-2 bg-[rgb(72,129,6)] rounded-md font-bold text-xl">
+                <button className="px-6 py-2 bg-[rgb(72,129,6)] rounded-md font-bold text-xl" onClick={ClickFav}>
                   Set as favorite
                 </button>
               </div>
