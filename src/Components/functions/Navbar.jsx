@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import SignInpage from "./SignInpage";
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const [isSignUp, setIsSignUp] = useState(false); // Login বা SignUp
   const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    userName: "", // শুধু SignUp এর জন্য
+  });
+
+  const handleOpenLogin = () => {
+    setIsSignUp(false);
+    setOpen(true);
+  };
+
+  const handleOpenSignUp = () => {
+    setIsSignUp(true);
+    setOpen(true);
+  };
+
+  const handleClose = () => setOpen(false);
 
   let LogoClick = () => {
     navigate("/");
@@ -33,8 +54,26 @@ export default function Navbar() {
         </div>
 
         <div className="ml-[800px]">
-          <button className="text-white mr-5 font-semibold px-3 py-1 hover:bg-gray-400/50 rounded-md">Log in</button>
-          <button className="text-white mr-5 font-semibold px-3 py-1 hover:bg-gray-400/50 rounded-md">Sign Up</button>
+          <button
+            className="text-white mr-5 font-semibold px-3 py-1 hover:bg-gray-400/50 rounded-md"
+            onClick={handleOpenLogin}
+          >
+            Log in
+          </button>
+          <button
+            className="text-white mr-5 font-semibold px-3 py-1 hover:bg-gray-400/50 rounded-md"
+            onClick={handleOpenSignUp}
+          >
+            Sign Up
+          </button>
+          <SignInpage
+            open={open}
+            onClose={handleClose}
+            isSignUp={isSignUp}
+             setIsSignUp={setIsSignUp}
+            formData={formData}
+            setFormData={setFormData}
+          />
         </div>
       </div>
 

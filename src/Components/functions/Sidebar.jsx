@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { FiVideo, FiHome } from "react-icons/fi";
 import { GiBearHead } from "react-icons/gi";
-import {  AiOutlineStar } from "react-icons/ai"; // ⭐ Added
+import { AiOutlineStar } from "react-icons/ai"; 
+import { FaCrown } from "react-icons/fa";// ⭐ Added
 
 export default function Sidebar() {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function Sidebar() {
   let ClickAnime = () => navigate("/animations");
   let MovieClick = () => navigate("/movies");
   let FavoriteClick = () => navigate("/favorites");
+  let Premium = () => navigate("/premiumMovies");
 
   return (
     <div>
@@ -56,11 +58,16 @@ export default function Sidebar() {
           className="flex gap-3 items-center mb-6 hover:bg-[#3d3d3d] p-2 rounded-lg cursor-pointer"
           onClick={FavoriteClick}
         >
-          
-            <AiOutlineStar className="text-white text-2xl" />
-         
+          <AiOutlineStar className="text-white text-2xl" />
 
           <p className="text-xl font-bold text-left text-white ">Favorites</p>
+        </div>
+        <div
+          className="flex gap-3 items-center mb-6 hover:bg-[#3d3d3d] p-2 rounded-lg cursor-pointer"
+          onClick={Premium}
+        >
+          <FaCrown className="text-white text-xl" />
+          <p className="text-xl font-bold text-left text-white ">Premium</p>
         </div>
       </div>
     </div>

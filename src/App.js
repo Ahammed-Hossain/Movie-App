@@ -6,6 +6,7 @@ import Animation from './Components/Animation';
 import MoviePage from './Components/MoviePage';
 import ShowVideo from './Components/functions/ShowVideo';
 import FavoritePage from './Components/FavoritePage';
+import PremiumPage from './Components/PremiumPage';
 
 function App() {
   const allrouters = createBrowserRouter([
@@ -14,6 +15,7 @@ function App() {
     { path: '/animations', element: <Animation /> },
     { path: '/showVideo/:trailerKey', element: <ShowVideo /> },
     { path: '/favorites', element: <FavoritePage /> },
+    { path: '/premiumMovies', element: <PremiumPage /> },
     { path: '/movies', element: <MoviePage /> }
   ]);
 

@@ -3,7 +3,7 @@ import Navbar from "./functions/Navbar";
 import Sidebar from "./functions/Sidebar";
 import MovieCard from "./functions/MovieCard";
 
-export default function MoviePage() {
+export default function PremiumPage() {
   let [movies, setMovies] = useState([]);
 
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -14,11 +14,10 @@ export default function MoviePage() {
     )
       .then((res) => res.json())
       .then((data) => {
-        setMovies(data.results.slice(0, 20));
+        setMovies(data.results.slice(0, 7));
       })
       .catch((err) => console.error(err));
   }, [apiKey]);
-
 
   return (
     <div>
@@ -27,14 +26,14 @@ export default function MoviePage() {
           <Navbar />
         </div>
         <div className="flex w-full">
-          <div className="w-[15%] bg-[#0e0f11]">
+          <div className="w-[15%] bg-[#0e0f11] h-lvh">
             <Sidebar />
           </div>
-          <div className="w-[85%] bg-[#0e0f11] h-[100%]">
-            <p className="text-white font-semibold text-left ml-5 mb-5 mt-5 text-xl">
-              Movies
+          <div className="w-[85%] bg-[#0e0f11] h-lvh">
+            <p className="text-white text-left text-xl mt-3 ml-5 font-bold">
+              Premium Movies
             </p>
-            <div className="flex flex-wrap gap-4 mb-10">
+            <div className="flex flex-wrap gap-4 mb-10 mt-5">
               {movies.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />
               ))}
