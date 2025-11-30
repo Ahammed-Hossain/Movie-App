@@ -1,18 +1,17 @@
-import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiVideo, FiHome } from "react-icons/fi";
 import { GiBearHead } from "react-icons/gi";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai"; // ⭐ Added
+import {  AiOutlineStar } from "react-icons/ai"; // ⭐ Added
 
 export default function Sidebar() {
   const navigate = useNavigate();
 
-  const [fav, setFav] = useState(false); // ⭐ Favorite toggle
+  // ⭐ Favorite toggle
 
   let homeClick = () => navigate("/");
   let ClickAnime = () => navigate("/animations");
   let MovieClick = () => navigate("/movies");
-  let FavoriteClick = () => navigate("/favoritepage");
+  let FavoriteClick = () => navigate("/favorites");
 
   return (
     <div>
@@ -26,7 +25,10 @@ export default function Sidebar() {
         {/* Home */}
         <div className="flex gap-3 items-center mb-6 hover:bg-[#3d3d3d] p-2 rounded-lg cursor-pointer">
           <FiHome className="text-white text-xl" />
-          <p className="text-xl font-bold text-left text-white" onClick={homeClick}>
+          <p
+            className="text-xl font-bold text-left text-white"
+            onClick={homeClick}
+          >
             Home
           </p>
         </div>
@@ -54,23 +56,9 @@ export default function Sidebar() {
           className="flex gap-3 items-center mb-6 hover:bg-[#3d3d3d] p-2 rounded-lg cursor-pointer"
           onClick={FavoriteClick}
         >
-          {fav ? (
-            <AiFillStar
-              className="text-yellow-400 text-2xl"
-              onClick={(e) => {
-                e.stopPropagation();
-                setFav(false);
-              }}
-            />
-          ) : (
-            <AiOutlineStar
-              className="text-white text-2xl"
-              onClick={(e) => {
-                e.stopPropagation();
-                setFav(true);
-              }}
-            />
-          )}
+          
+            <AiOutlineStar className="text-white text-2xl" />
+         
 
           <p className="text-xl font-bold text-left text-white ">Favorites</p>
         </div>

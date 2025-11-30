@@ -13,7 +13,7 @@ function App() {
     { path: '/DetailsPage/:id', element: <DetailsPage /> }, // <-- DYNAMIC ROUTE
     { path: '/animations', element: <Animation /> },
     { path: '/showVideo/:trailerKey', element: <ShowVideo /> },
-    { path: '/favoritepage', element: <FavoritePage /> },
+    { path: '/favorites', element: <FavoritePage /> },
     { path: '/movies', element: <MoviePage /> }
   ]);
 
