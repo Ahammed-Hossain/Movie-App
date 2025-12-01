@@ -13,7 +13,17 @@ export default function Sidebar() {
   let ClickAnime = () => navigate("/animations");
   let MovieClick = () => navigate("/movies");
   let FavoriteClick = () => navigate("/favorites");
-  let Premium = () => navigate("/premiumMovies");
+  
+
+   let CheckUser=()=> {
+
+    const loggedusers = JSON.parse(localStorage.getItem("loggedusers")) || [];
+    if (loggedusers) {
+      navigate("/premiumMovies");
+    } else {
+      alert('Please logIn!')
+    }
+   }
 
   return (
     <div>
@@ -64,10 +74,9 @@ export default function Sidebar() {
         </div>
         <div
           className="flex gap-3 items-center mb-6 hover:bg-[#3d3d3d] p-2 rounded-lg cursor-pointer"
-          onClick={Premium}
         >
           <FaCrown className="text-white text-xl" />
-          <p className="text-xl font-bold text-left text-white ">Premium</p>
+          <p className="text-xl font-bold text-left text-white " onClick={CheckUser}>Premium</p>
         </div>
       </div>
     </div>

@@ -29,14 +29,14 @@ export default function SignInpage({
   const handleSubmit = (e) => {
   e.preventDefault();
   if (isSignUp) {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const exists = users.find((u) => u.email === formData.email);
+    const loggedusers = JSON.parse(localStorage.getItem("loggedusers")) || [];
+    const exists = loggedusers.find((u) => u.email === formData.email);
     if (exists) {
       setMessage("User already exists. Try logging in.");
       setMessageType("error");
     } else {
-      users.push({ ...formData });
-      localStorage.setItem("users", JSON.stringify(users));
+      loggedusers.push({ ...formData });
+      localStorage.setItem("users", JSON.stringify(loggedusers));
       setMessage("Sign Up successful! You can now log in.");
       setMessageType("success");
 
@@ -47,14 +47,14 @@ export default function SignInpage({
       setIsSignUp(false);
     }
   } else {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const user = users.find(
+    const loggedusers = JSON.parse(localStorage.getItem("loggedusers")) || [];
+    const user = loggedusers.find(
       (u) => u.email === formData.email && u.password === formData.password
     );
     if (user) {
       setMessage(`Welcome back, ${user.userName || "User"}!`);
       setMessageType("success");
-
+      
       // Clear inputs after successful log in
       setFormData({ email: "", password: "", userName: "" });
 
