@@ -42,7 +42,7 @@ export default function Home() {
             </div>
 
             <h1 className="text-left ml-4 mt-4 mb-4 text-white text-2xl font-bold">
-              🔥Trending Movies
+              Movies
             </h1>
             <div className="relative">
               <button

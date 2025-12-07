@@ -17,8 +17,8 @@ export default function Sidebar() {
 
    let CheckUser=()=> {
 
-    const loggedusers = JSON.parse(localStorage.getItem("loggedusers")) || [];
-    if (loggedusers) {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
       navigate("/premiumMovies");
     } else {
       alert('Please logIn!')

@@ -11,6 +11,7 @@ export default function SignInpage({
   const [visible, setVisible] = useState(false);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("");
+  
 
   useEffect(() => {
     if (open) setVisible(true);
@@ -29,14 +30,14 @@ export default function SignInpage({
   const handleSubmit = (e) => {
   e.preventDefault();
   if (isSignUp) {
-    const loggedusers = JSON.parse(localStorage.getItem("loggedusers")) || [];
-    const exists = loggedusers.find((u) => u.email === formData.email);
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const exists = users.find((u) => u.email === formData.email);
     if (exists) {
       setMessage("User already exists. Try logging in.");
       setMessageType("error");
     } else {
-      loggedusers.push({ ...formData });
-      localStorage.setItem("users", JSON.stringify(loggedusers));
+      users.push({ ...formData });
+      localStorage.setItem("users", JSON.stringify(users));
       setMessage("Sign Up successful! You can now log in.");
       setMessageType("success");
 
@@ -47,13 +48,14 @@ export default function SignInpage({
       setIsSignUp(false);
     }
   } else {
-    const loggedusers = JSON.parse(localStorage.getItem("loggedusers")) || [];
-    const user = loggedusers.find(
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(
       (u) => u.email === formData.email && u.password === formData.password
     );
     if (user) {
       setMessage(`Welcome back, ${user.userName || "User"}!`);
       setMessageType("success");
+      localStorage.setItem("currentUser", JSON.stringify(user));
       
       // Clear inputs after successful log in
       setFormData({ email: "", password: "", userName: "" });

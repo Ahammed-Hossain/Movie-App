@@ -8,6 +8,8 @@ export default function Navbar() {
   const [isSignUp, setIsSignUp] = useState(false); // Login বা SignUp
   const navigate = useNavigate();
 
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,6 +24,11 @@ export default function Navbar() {
   const handleOpenSignUp = () => {
     setIsSignUp(true);
     setOpen(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("currentUser");
+    window.location.href = "/";
   };
 
   const handleClose = () => setOpen(false);
@@ -54,11 +61,22 @@ export default function Navbar() {
         </div>
 
         <div className="ml-[800px]">
-          <button
-            className="text-white mr-5 font-semibold px-3 py-1 hover:bg-gray-400/50 rounded-md"
-            onClick={handleOpenLogin}
-          >
-            Log in
+          <button onClick={handleOpenLogin}>
+            {currentUser ? (
+              <button
+                className="text-white mr-5 font-semibold px-3 py-1 hover:bg-gray-400/50 rounded-md"
+                onClick={handleLogout}
+              >
+                Log Out
+              </button>
+            ) : (
+              <button
+                className="text-white mr-5 font-semibold px-3 py-1 hover:bg-gray-400/50 rounded-md"
+                onClick={handleOpenLogin}
+              >
+                Log In
+              </button>
+            )}
           </button>
           <button
             className="text-white mr-5 font-semibold px-3 py-1 hover:bg-gray-400/50 rounded-md"
@@ -70,7 +88,7 @@ export default function Navbar() {
             open={open}
             onClose={handleClose}
             isSignUp={isSignUp}
-             setIsSignUp={setIsSignUp}
+            setIsSignUp={setIsSignUp}
             formData={formData}
             setFormData={setFormData}
           />
