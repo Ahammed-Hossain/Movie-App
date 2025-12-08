@@ -45,7 +45,7 @@ export default function Navbar() {
           className="cursor-pointer ml-10 font-bold text-3xl text-white"
           onClick={LogoClick}
         >
-          MovieApp
+          Movie-Hub
         </p>
 
         <div className="px-20">
