@@ -5,8 +5,10 @@ import MovieCard from "./functions/MovieCard";
 import Recommended from "./functions/Recommended";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import AnimeSection from "./functions/AnimeSection";
+import Banner from "./functions/banner";
 export default function Home() {
   let [movies, setMovies] = useState([]);
+  const [bannerMovies, setBannerMovies] = useState([]);
   const scrollRef = useRef(null);
 
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -20,6 +22,12 @@ export default function Home() {
       .catch((err) => console.error(err));
   }, [apiKey]);
 
+   useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`)
+      .then((res) => res.json())
+      .then((data) => setBannerMovies(data.results.slice(0, 5))); // 5 banner movies
+  }, [apiKey]);
+
   return (
     <div>
       <div>
@@ -29,19 +37,17 @@ export default function Home() {
             <Sidebar />
           </div>
           <div className="w-[85%] bg-[#0e0f11] h-[100%]">
-            <img
-              src="./sukuna.png"
-              alt="BannerImg"
-              className="w-full h-[500px] object-cover"
-            />
-            <h1 className="text-left ml-4 mt-4 mb-4 text-white text-2xl font-bold">
+            <div>
+              <Banner movies={bannerMovies}/>
+            </div>
+            <h1 className="text-left ml-4 mt-4 mb-2 text-white text-2xl font-bold">
               Recommended for you
             </h1>
             <div>
               <Recommended />
             </div>
 
-            <h1 className="text-left ml-4 mt-4 mb-4 text-white text-2xl font-bold">
+            <h1 className="text-left ml-4 mt-6 mb-2 text-white text-2xl font-bold">
               Movies
             </h1>
             <div className="relative">
@@ -72,7 +78,7 @@ export default function Home() {
                 <FiChevronRight size={24} />
               </button>
             </div>
-            <h1 className="text-left ml-4 mt-4 mb-4 text-white text-2xl font-bold">
+            <h1 className="text-left ml-4 mt-6 mb-2 text-white text-2xl font-bold">
               Animations
             </h1>
             <div>
