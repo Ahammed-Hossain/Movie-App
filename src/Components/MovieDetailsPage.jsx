@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./functions/Navbar";
-import Sidebar from "./functions/Sidebar";
+
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function DetailsPage() {
@@ -94,16 +93,14 @@ export default function DetailsPage() {
 
   return (
     <div className="bg-[#0e0f11] min-h-screen">
-      <Navbar />
+
 
       <div className="flex w-full">
-        {/* Sidebar */}
-        <div className="w-[15%]">
-          <Sidebar />
-        </div>
+
+
 
         {/* Main Content */}
-        <div className="w-[85%] p-5">
+        <div className="p-5">
           <h2 className="text-white text-left font-semibold text-xl mb-5">
             Details
           </h2>
@@ -127,7 +124,7 @@ export default function DetailsPage() {
               <div className="mt-10 flex gap-4">
                 {/* Watch Trailer */}
                 <button
-                  className="px-6 py-2 bg-[rgb(72,129,6)] rounded-md font-bold text-xl"
+                  className="px-6 py-2 bg-[rgb(72,129,6)] rounded-md font-bold text-xl cursor-pointer"
                   onClick={ClickWatch}
                   disabled={!trailerKey}
                 >
