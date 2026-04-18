@@ -57,7 +57,11 @@ export default function Home() {
 
         <div
           ref={scrollRef}
-          className="flex overflow-x-hidden gap-4 px-5 py-3"
+          className="
+    flex gap-3 px-3 py-3
+    overflow-x-auto md:overflow-x-hidden
+    scroll-smooth
+  "
         >
           {movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />

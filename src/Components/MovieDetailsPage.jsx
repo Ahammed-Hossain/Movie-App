@@ -94,62 +94,75 @@ export default function DetailsPage() {
   return (
     <div className="bg-[#0e0f11] min-h-screen">
 
-
       <div className="flex w-full">
 
-
-
         {/* Main Content */}
-        <div className="p-5">
-          <h2 className="text-white text-left font-semibold text-xl mb-5">
+        <div className="p-3 sm:p-5 w-full">
+
+          <h2 className="text-white text-left font-semibold text-lg sm:text-xl mb-4 sm:mb-5">
             Details
           </h2>
 
-          <div className="flex gap-8">
-            {/* Movie Poster */}
-            <div className="w-[180px] rounded-lg overflow-hidden">
+          {/* RESPONSIVE LAYOUT */}
+          <div className="flex flex-col md:flex-row gap-5 md:gap-8">
+
+            {/* Poster */}
+            <div className="w-[140px] sm:w-[160px] md:w-[180px] mx-auto md:mx-0 rounded-lg overflow-hidden">
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt={movie.title}
-                className="w-full"
+                className="w-full object-cover"
               />
             </div>
 
-            {/* Movie Info */}
-            <div className="text-white text-left">
-              <p className="text-4xl font-bold">{movie.title}</p>
-              <p className="text-lg mt-3">{movie.release_date}</p>
-              <p className="mt-3">{movie.overview}</p>
+            {/* Info */}
+            <div className="text-white text-center md:text-left">
 
-              <div className="mt-10 flex gap-4">
-                {/* Watch Trailer */}
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold">
+                {movie.title}
+              </p>
+
+              <p className="text-sm sm:text-base md:text-lg mt-2 sm:mt-3">
+                {movie.release_date}
+              </p>
+
+              <p className="mt-3 text-sm sm:text-base leading-relaxed">
+                {movie.overview}
+              </p>
+
+              {/* BUTTONS */}
+              <div className="mt-6 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 items-center md:items-start">
+
+                {/* Watch */}
                 <button
-                  className="px-6 py-2 bg-[rgb(72,129,6)] rounded-md font-bold text-xl cursor-pointer"
+                  className="w-full sm:w-auto px-4 sm:px-6 py-2 bg-[rgb(72,129,6)] rounded-md font-bold text-base sm:text-xl"
                   onClick={ClickWatch}
                   disabled={!trailerKey}
                 >
                   Watch Trailer
                 </button>
 
-                {/* Favorite Toggle Button */}
+                {/* Favorite */}
                 {isFav ? (
                   <button
-                    className="px-6 py-2 bg-red-600 rounded-md font-bold text-xl"
+                    className="w-full sm:w-auto px-4 sm:px-6 py-2 bg-red-600 rounded-md font-bold text-base sm:text-xl"
                     onClick={deleteFromFavorite}
                   >
                     Delete from Favorite
                   </button>
                 ) : (
                   <button
-                    className="px-6 py-2 bg-[rgb(72,129,6)] rounded-md font-bold text-xl"
+                    className="w-full sm:w-auto px-4 sm:px-6 py-2 bg-[rgb(72,129,6)] rounded-md font-bold text-base sm:text-xl"
                     onClick={addToFavorite}
                   >
                     Add to Favorite
                   </button>
                 )}
+
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "./functions/MovieCard";
 
 export default function Animation() {
-  let [animes, setAnimes] = useState([]);
+  const [animes, setAnimes] = useState([]);
 
   const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -16,20 +16,19 @@ export default function Animation() {
       })
       .catch((err) => console.error(err));
   }, [apiKey]);
-  console.log(animes);
 
   return (
-    <div>
-      <div className="flex w-full">
-        <div className=" bg-[#0e0f11] h-[100%]">
-          <p className="text-white font-semibold text-left ml-5 mb-5 mt-5 text-xl">
-            Animations
-          </p>
-          <div className="flex flex-wrap gap-4 mb-10">
-            {animes.map((anime) => (
-              <MovieCard key={anime.id} movie={anime} />
-            ))}
-          </div>
+    <div className="w-full min-h-screen bg-[#0e0f11] px-4 md:px-8">
+
+      <p className="text-white font-semibold text-xl mt-5 mb-5">
+        Animations
+      </p>
+
+      <div className="flex justify-center">
+       <div className="flex flex-wrap justify-start gap-4 w-full mb-10">
+          {animes.map((anime) => (
+            <MovieCard key={anime.id} movie={anime} />
+          ))}
         </div>
       </div>
     </div>

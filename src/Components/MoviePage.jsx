@@ -18,22 +18,21 @@ export default function MoviePage() {
   }, [apiKey]);
 
 
-  return (
-    <div>
-      <div>
-        <div className="flex w-full">
-          <div className="bg-[#0e0f11] h-[100%]">
-            <p className="text-white font-semibold text-left ml-5 mb-5 mt-5 text-xl">
-              Movies
-            </p>
-            <div className="flex flex-wrap gap-4 mb-10">
-              {movies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
-              ))}
-            </div>
-          </div>
-        </div>
+return (
+  <div className="w-full min-h-screen bg-[#0e0f11] px-4 md:px-8">
+    
+    <p className="text-white font-semibold text-xl mt-5 mb-5">
+      Movies
+    </p>
+
+    <div className="flex justify-center">
+      <div className="flex flex-wrap justify-start gap-4 w-full mb-10">
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
       </div>
     </div>
-  );
+
+  </div>
+);
 }

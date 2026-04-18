@@ -4,26 +4,43 @@ import { GiBearHead } from "react-icons/gi";
 import { AiOutlineStar } from "react-icons/ai"; 
 import { FaCrown } from "react-icons/fa";// ⭐ Added
 
-export default function Sidebar() {
+export default function Sidebar({ setIsSidebarOpen }) {
   const navigate = useNavigate();
 
   // ⭐ Favorite toggle
 
-  let homeClick = () => navigate("/");
-  let ClickAnime = () => navigate("/animations");
-  let MovieClick = () => navigate("/movies");
-  let FavoriteClick = () => navigate("/favorites");
+  let homeClick = () => {
+  navigate("/");
+  setIsSidebarOpen(false);
+};
+
+let ClickAnime = () => {
+  navigate("/animations");
+  setIsSidebarOpen(false);
+};
+
+let MovieClick = () => {
+  navigate("/movies");
+  setIsSidebarOpen(false);
+};
+
+let FavoriteClick = () => {
+  navigate("/favorites");
+  setIsSidebarOpen(false);
+};
   
 
-   let CheckUser=()=> {
+  let CheckUser = () => {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (currentUser) {
-      navigate("/premiumMovies");
-    } else {
-      alert('Please logIn!')
-    }
-   }
+  if (currentUser) {
+    navigate("/premiumMovies");
+  } else {
+    alert("Please logIn!");
+  }
+
+  setIsSidebarOpen(false);
+};
 
   return (
     <div>

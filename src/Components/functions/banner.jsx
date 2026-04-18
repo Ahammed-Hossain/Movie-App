@@ -6,7 +6,9 @@ export default function Banner({ movies }) {
   const [index, setIndex] = useState(0);
   const navigate = useNavigate();
 
-  // Auto-slide every 3 seconds
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % movies.length);
@@ -23,55 +25,82 @@ export default function Banner({ movies }) {
     setIndex((index + 1) % movies.length);
   };
 
-   const goToDetails = (id) => {
+  const goToDetails = (id) => {
     navigate(`/DetailsPage/${id}`);
   };
 
   if (!movies || movies.length === 0) return null;
 
+  // swipe
+  const handleTouchStart = (e) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    const distance = touchStart - touchEnd;
+
+    if (distance > 50) nextSlide();
+    if (distance < -50) prevSlide();
+  };
+
   return (
-    <div className="relative w-full h-[600px] overflow-hidden rounded-lg shadow-lg">
-      {/* Slider Images */}
+    <div
+      className="relative w-full overflow-hidden h-[220px] sm:h-[300px] md:h-[450px] lg:h-[600px]"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* IMAGE */}
       <div
-        className="w-full h-full bg-cover bg-center duration-500 cursor-pointer"
+        className="w-full h-full bg-cover bg-center cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
         onClick={() => goToDetails(movies[index].id)}
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/original/${movies[index].backdrop_path})`,
         }}
       >
-        <div className="absolute bottom-5 left-5 text-white">
-          <h2 className="text-3xl font-bold drop-shadow-lg">
+        {/* overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+        {/* TEXT (FIXED MOBILE SIZE) */}
+        <div className="absolute bottom-3 sm:bottom-5 left-3 sm:left-5 text-white max-w-[80%]">
+          <h2 className="text-sm sm:text-lg md:text-2xl lg:text-3xl font-bold leading-tight">
             {movies[index].title}
           </h2>
         </div>
       </div>
 
-      {/* Left Button */}
+      {/* LEFT BUTTON (desktop only) */}
       <button
         onClick={prevSlide}
-        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 p-3 rounded-full text-white"
+        className="hidden md:block absolute left-3 top-1/2 -translate-y-1/2 
+        bg-black/40 p-3 rounded-full text-white hover:bg-black/60 transition"
       >
         <FiChevronLeft size={24} />
       </button>
 
-      {/* Right Button */}
+      {/* RIGHT BUTTON (desktop only) */}
       <button
         onClick={nextSlide}
-        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 p-3 rounded-full text-white"
+        className="hidden md:block absolute right-3 top-1/2 -translate-y-1/2 
+        bg-black/40 p-3 rounded-full text-white hover:bg-black/60 transition"
       >
         <FiChevronRight size={24} />
       </button>
 
-      {/* Dot Indicators */}
-      <div className="absolute bottom-3 w-full flex justify-center gap-2">
+      {/* DOTS */}
+      <div className="absolute bottom-2 sm:bottom-3 w-full flex justify-center gap-2">
         {movies.map((_, i) => (
           <div
             key={i}
             onClick={() => setIndex(i)}
-            className={`w-3 h-3 rounded-full cursor-pointer ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full cursor-pointer transition ${
               i === index ? "bg-white" : "bg-white/40"
             }`}
-          ></div>
+          />
         ))}
       </div>
     </div>
