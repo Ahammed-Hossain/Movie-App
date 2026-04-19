@@ -66,8 +66,8 @@ export default function Banner({ movies }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
         {/* TEXT (FIXED MOBILE SIZE) */}
-        <div className="absolute bottom-3 sm:bottom-5 left-3 sm:left-5 text-white max-w-[80%]">
-          <h2 className="text-sm sm:text-lg md:text-2xl lg:text-3xl font-bold leading-tight">
+        <div className="absolute bottom-6 sm:bottom-5 left-3 sm:left-5 text-white max-w-[80%]">
+          <h2 className="text-base sm:text-lg md:text-2xl lg:text-3xl font-bold leading-tight">
             {movies[index].title}
           </h2>
         </div>
@@ -97,9 +97,8 @@ export default function Banner({ movies }) {
           <div
             key={i}
             onClick={() => setIndex(i)}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full cursor-pointer transition ${
-              i === index ? "bg-white" : "bg-white/40"
-            }`}
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full cursor-pointer transition ${i === index ? "bg-white" : "bg-white/40"
+              }`}
           />
         ))}
       </div>

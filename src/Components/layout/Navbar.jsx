@@ -129,13 +129,13 @@ export default function Navbar({ setIsSidebarOpen }) {
       {/* MOBILE SEARCH */}
       <div className="md:hidden px-4 pb-3 bg-[#0e0f11]">
         <div className="relative mt-3">
-          <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-white text-lg" />
+          <FiSearch className="absolute left-2 top-1/2 -translate-y-1/2 text-white text-base" />
 
           <input
             type="text"
             placeholder="Search movies..."
-            className="border rounded-md px-10 py-2 w-full
-            focus:outline-none text-white bg-gray-400/50"
+            className="border rounded-md px-8 py-1.5 w-full
+            focus:outline-none text-white bg-gray-400/50 text-sm"
           />
         </div>
       </div>
