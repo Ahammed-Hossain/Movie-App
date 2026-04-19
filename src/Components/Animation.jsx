@@ -25,7 +25,7 @@ export default function Animation() {
       </p>
 
       <div className="flex justify-center">
-       <div className="flex flex-wrap justify-start gap-4 w-full mb-10">
+       <div className="flex flex-wrap justify-start gap-2 w-full mb-10">
           {animes.map((anime) => (
             <MovieCard key={anime.id} movie={anime} />
           ))}

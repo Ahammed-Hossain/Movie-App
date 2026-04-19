@@ -18,7 +18,7 @@ export default function FavoritePage() {
 
       {/* SAME STYLE AS MOVIE PAGE */}
       <div className="flex justify-center">
-        <div className="flex flex-wrap justify-start gap-4 w-full mb-10">
+        <div className="flex flex-wrap justify-start gap-2 w-full mb-10">
 
           {favorites.length > 0 ? (
             favorites.map((movie) => (
